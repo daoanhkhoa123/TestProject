@@ -1,0 +1,12 @@
+def generate_ngrams(corpus, n):
+    tokens = re.findall(r'\w+', corpus.lower()) 
+    ngrams = []
+    for i in range(len(tokens) - n + 1):
+        ngram = tuple(tokens[i:i + n])
+        ngrams.append(ngram)
+    return ngrams
+
+def train_ngram_model(corpus, n):
+    ngrams = generate_ngrams(corpus, n)
+    ngram_counts = Counter(ngrams)
+    return ngram_counts
